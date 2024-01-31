@@ -1,0 +1,8 @@
+.usa-container{
+    display: flex;
+    justify-content: center;
+}
+
+.base-btn{
+    cursor: pointer;
+}

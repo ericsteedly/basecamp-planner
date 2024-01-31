@@ -1,15 +1,25 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
+import ApplicationViews from './views/ApplicationViews';
+import { Authorized } from './components/auth/Authorized';
 
-function App() {
+export default function App() {
   return (
-    <div>
-      Working
-    </div>
-    // <Routes>
-    //   <Route></Route>
-    // </Routes>
+
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+
+      <Route path='*' element={
+        <Authorized>
+          <ApplicationViews />
+        </Authorized>
+        } 
+      />
+    </Routes>
   );
 }
 
-export default App;
+
