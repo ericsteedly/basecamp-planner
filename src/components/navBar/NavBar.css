@@ -1,0 +1,11 @@
+.navBar-block {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    border:2px dotted red;
+    padding: 10px 25px;
+}
+
+.navBar-item {
+    font-size: large;
+}

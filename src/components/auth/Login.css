@@ -1,0 +1,19 @@
+.login-main-container {
+
+}
+
+.login-form-container {
+    display: flex;
+    justify-content: center;
+}
+
+.login-form {
+    border: 2px dotted red;
+    margin: 50px;
+    padding:40px
+}
+
+.login-register-container {
+    display: flex;
+    justify-content: center;
+}
