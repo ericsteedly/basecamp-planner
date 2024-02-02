@@ -1,0 +1,62 @@
+.tripList-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.tripList-header{
+    text-align: center;
+}
+
+.tripCard{
+    display: flex;
+    flex-direction: column;
+    border: 2px dotted red;
+    padding:10px 20px;
+    margin: 20px;
+}
+
+.tripCard-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.tripCard-name{
+    margin: 0;
+}
+
+.tripCard-date-container{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.tripCard-date{
+    margin-right: 10px;
+}
+
+.tripCard-baseCamp-list{
+    list-style-type: none;
+}
+
+.baseCamp-list-item{
+    display: flex;
+    justify-content: flex-start;
+    margin: 5px;
+}
+
+.baseCamp-item{
+    margin: 5px;
+}
+
+.tripCard-btn-container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.tripCard-add-btn{
+    margin: 10px 20px;
+}
+
+.tripCard-delete-btn{
+    margin: 10px 20px;
+}

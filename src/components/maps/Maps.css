@@ -3,6 +3,34 @@
     justify-content: center;
 }
 
+.usa-prompt{
+    text-align: center;
+}
+
+.stateMap-main{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.state-prompt{
+    text-align: center;
+}
+
+.state-container{
+    display: flex;
+    justify-content: center;
+}
+
 .base-btn{
     cursor: pointer;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    outline: inherit;
 }
+
+
+
+

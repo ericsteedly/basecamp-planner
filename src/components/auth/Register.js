@@ -1,19 +1,23 @@
 import { useNavigate } from "react-router-dom"
 import "./Register.css"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { getUserByEmail, postNewUser } from "../../services/userService"
+import { getStates } from "../../services/tripService"
 
 
 export default function Register() {
     const navigate = useNavigate()
-
+    
+    const [states, setStates] = useState([])
     const [newUser, setNewUser] = useState({
         firstName: '',
         lastName:'',
-        email:''
+        email:'',
+        stateId: 0
     })
 
-    const createUser = () => {
+    const createUser = (event) => {
+
         postNewUser(newUser).then(()=>{
             navigate("/login")
         })
@@ -22,13 +26,17 @@ export default function Register() {
     const handleSubmit = (event) => {
         event.preventDefault()
 
-        getUserByEmail(newUser.email).then((res)=>{
-            if(res.length > 0){
-                window.alert("Account with this email already exists")
-            } else {
-                createUser()
-            }
-        })
+        if(newUser.stateId === 0) {
+            window.alert("Please select a state!")
+        } else {
+            getUserByEmail(newUser.email).then((res)=>{
+                if(res.length > 0){
+                    window.alert("Account with this email already exists")
+                } else {
+                    createUser()
+                }
+            })
+        }
     }
 
     const updateUser = (event) => {
@@ -36,6 +44,12 @@ export default function Register() {
         userCopy[event.target.id] = event.target.value
         setNewUser(userCopy)
     }
+
+    useEffect(()=>{
+        getStates().then((res)=>{
+            setStates(res)
+        })
+    }, [])
 
     return (
         <div className="register-main-container">
@@ -74,11 +88,26 @@ export default function Register() {
                                 className="form-control"
                                 type="email"
                                 id="email"
-                                value={newUser.email}
+                                value={newUser.email.toLocaleLowerCase()}
                                 placeholder="Email Address"
                                 required
                                 onChange={updateUser} 
                             />
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <div className="form-group">
+                            <select 
+                                className="homeState-dropdown"
+                                id="stateId"
+                                required
+                                onChange={updateUser}
+                            >
+                                <option value={0}>Choose your home state!</option>
+                                {states.map((state)=>{
+                                    return <option key={state.id} value={state.id}>{state.name}</option>
+                                })}
+                            </select>
                         </div>
                     </fieldset>
                     <fieldset>

@@ -1,0 +1,42 @@
+.baseCamp-details-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px dotted red;
+}
+
+.baseCamp-details{
+    margin: 20px 40px;
+    flex-basis: 80%;
+}
+
+.baseCamp-name{
+    text-align: center;
+}
+
+.addBase-container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-basis: 10%;
+}
+
+.addBase-date-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.addBase-date{
+    padding: 10px;
+}
+
+.addBase-btn-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.addBase-btn{
+
+}

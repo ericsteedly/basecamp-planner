@@ -1,34 +1,60 @@
 import NavBar from "../components/navBar/NavBar";
 import USA from "../components/maps/USA";
 import { Outlet, Route, Routes } from "react-router-dom";
-import Utah from "../components/maps/Utah";
-import Arizona from "../components/maps/Arizona";
-import California from "../components/maps/California";
-import Idaho from "../components/maps/Idaho";
-import Montana from "../components/maps/Montana";
-import Nevada from "../components/maps/Nevada";
-import NewMexico from "../components/maps/NewMexico";
+// import Utah from "../components/maps/stateMaps/Utah";
+// import Arizona from "../components/maps/stateMaps/Arizona";
+// import California from "../components/maps/stateMaps/California";
+// import Idaho from "../components/maps/stateMaps/Idaho";
+// import Montana from "../components/maps/stateMaps/Montana";
+// import Nevada from "../components/maps/stateMaps/Nevada";
+// import NewMexico from "../components/maps/stateMaps/NewMexico";
+import NewTrip from "../components/trips.js/NewTrip";
+import MyTrips from "../components/trips.js/MyTrips";
+import UserProfile from "../components/users/User";
+import { useEffect, useState } from "react";
+import StateView from "../components/maps/utility/StateView";
 
 export default function ApplicationViews() {
+    const [currentUser, setCurrentUser] = useState({})
+    const [workingTripId, setWorkingTripId] = useState(0)
+    const [workingTripDates, setWorkingTripDates] = useState({})
+
+    useEffect(()=> {
+        const localBaseCampUser = localStorage.getItem("baseCamp-user")
+        const baseCampUserObj = JSON.parse(localBaseCampUser)
+        setCurrentUser(baseCampUserObj)
+    }, [])
+
     return(
         <Routes>
             <Route 
                 path="/" 
                 element={
                     <>
-                        <NavBar />
+                        <NavBar setWorkingTripId={setWorkingTripId} setWorkingTripDates={setWorkingTripDates}/>
                         <Outlet />
                     </>
                 }
             >
-                <Route index element={<USA />}/>
-                <Route path="utah" element={<Utah />} />
-                <Route path="arizona" element={<Arizona />} />
-                <Route path="california" element={<California />} />
-                <Route path="idaho" element={<Idaho />} />
-                <Route path="montana" element={<Montana />} />
-                <Route path="nevada" element={<Nevada />} />
-                <Route path="newMexico" element={<NewMexico />} />
+                <Route index element={<USA workingTripId={workingTripId} />}/>
+                <Route path=":stateId" element={<StateView workingTripId={workingTripId} workingTripDates={workingTripDates} />}/>
+
+
+                {/* <Route path="utah" element={<Utah workingTripId={workingTripId} workingTripDates={workingTripDates} />} />
+                <Route path="arizona" element={<Arizona workingTripId={workingTripId} workingTripDates={workingTripDates}/>} />
+                <Route path="california" element={<California workingTripId={workingTripId} workingTripDates={workingTripDates}/>} />
+                <Route path="idaho" element={<Idaho workingTripId={workingTripId} workingTripDates={workingTripDates}/>} />
+                <Route path="montana" element={<Montana workingTripId={workingTripId} workingTripDates={workingTripDates}/>} />
+                <Route path="nevada" element={<Nevada workingTripId={workingTripId} workingTripDates={workingTripDates}/>} />
+                <Route path="newMexico" element={<NewMexico workingTripId={workingTripId} workingTripDates={workingTripDates}/>} /> */}
+
+                <Route path="myTrips" 
+                    element={<MyTrips 
+                                currentUser={currentUser} 
+                                setWorkingTripId={setWorkingTripId}
+                                setWorkingTripDates={setWorkingTripDates} />} />
+                <Route path="newTrip" element={<NewTrip currentUser={currentUser} />} />
+                <Route path="profile" element={<UserProfile currentUser={currentUser} />} />
             </Route>
         </Routes>
     )
