@@ -10,7 +10,7 @@ export default function Login() {
     const handleSignIn = (event) => {
         event.preventDefault()
 
-        getUserByEmail(email).then((res)=>{
+        getUserByEmail(email.toLocaleLowerCase()).then((res)=>{
             if (res.length === 1) {
                 const user = res[0]
                 localStorage.setItem(
