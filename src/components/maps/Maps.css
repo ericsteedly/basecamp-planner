@@ -10,6 +10,7 @@
 .stateMap-main{
     display: flex;
     justify-content: space-evenly;
+    flex-basis: 50%;
 }
 
 .state-prompt{

@@ -3,6 +3,8 @@ import { getBaseCampById, getTripBaseCamps, postTripBaseCamp } from "../../../se
 import "./BaseCampDetails.css"
 import { useNavigate } from "react-router-dom"
 
+// import { DatePicker } from "@mui/x-date-pickers"
+
 export default function BaseCampDetails({ workingTripId, baseId, workingTripDates }) {
 const navigate = useNavigate()
 
@@ -80,7 +82,7 @@ const navigate = useNavigate()
         <div className="baseCamp-details-main">
             <div className="baseCamp-details">
                 <h1>BaseCamp Details</h1>
-                <h3 className="baseCamp-name">{baseCamp.name}</h3>
+                <h3 className="baseCamp-name"><u>{baseCamp.name}</u></h3>
                 {baseCamp.description}
             </div>
             {workingTripId !== 0 &&
@@ -98,6 +100,16 @@ const navigate = useNavigate()
                             onChange={(e)=>{setStartDate(e.target.value)}}
                         />
                     </label>
+                            {/* <DatePicker
+                            id="start"
+                            label="Start Date"
+                            required
+                            inputFormat="MM/DD/YYYY"
+                            value={startDate}
+                            minDate={endDateMin}
+                            maxDate={startDateMax}
+                            onChange={(e)=>{setStartDate(e.target.value)}}
+                            /> */}
                     </div>
                     <div className="addBase-date">
                     <label> End Date:
@@ -111,6 +123,16 @@ const navigate = useNavigate()
                             onChange={(e)=>{setEndDate(e.target.value)}}
                         />
                     </label>
+                            {/* <DatePicker
+                            id="end"
+                            label="End Date"
+                            required
+                            inputFormat="MM/DD/YYYY"
+                            value={endDate}
+                            minDate={endDateMin}
+                            maxDate={startDateMax}
+                            onChange={(e)=>{setEndDate(e.target.value)}}
+                        /> */}
                     </div>
                 </div>
                 <div className="addBase-btn-container">

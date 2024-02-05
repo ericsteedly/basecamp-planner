@@ -10,9 +10,10 @@ import { Outlet, Route, Routes } from "react-router-dom";
 // import NewMexico from "../components/maps/stateMaps/NewMexico";
 import NewTrip from "../components/trips.js/NewTrip";
 import MyTrips from "../components/trips.js/MyTrips";
-import UserProfile from "../components/users/User";
+import Profile from "../components/users/Profile";
 import { useEffect, useState } from "react";
 import StateView from "../components/maps/utility/StateView";
+import EditProfile from "../components/users/EditProfile";
 
 export default function ApplicationViews() {
     const [currentUser, setCurrentUser] = useState({})
@@ -54,7 +55,8 @@ export default function ApplicationViews() {
                                 setWorkingTripId={setWorkingTripId}
                                 setWorkingTripDates={setWorkingTripDates} />} />
                 <Route path="newTrip" element={<NewTrip currentUser={currentUser} />} />
-                <Route path="profile" element={<UserProfile currentUser={currentUser} />} />
+                <Route path="profile" element={<Profile currentUser={currentUser} />} />
+                <Route path="editProfile" element={<EditProfile currentUser={currentUser} />} />
             </Route>
         </Routes>
     )

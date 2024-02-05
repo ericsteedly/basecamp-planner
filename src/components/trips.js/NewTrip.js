@@ -1,7 +1,9 @@
 import { useState } from "react"
-import "./Trips.css"
 import { postNewTrip } from "../../services/tripService"
 import { useNavigate } from "react-router-dom"
+import "./Trips.css"
+
+// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 export default function NewTrip({ currentUser }) {
     const navigate = useNavigate()
@@ -10,6 +12,14 @@ export default function NewTrip({ currentUser }) {
     const [startDate, setStartDate] = useState("")
     const [endDate, setEndDate] = useState("")
 
+
+    // const handleStart = (date) => {
+    //     setStartDate(date)
+    // }
+
+    // const handleEnd = (date) => {
+    //     setEndDate(date)
+    // }
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -45,6 +55,16 @@ export default function NewTrip({ currentUser }) {
                 </fieldset>
                 <fieldset>
                     <div className="form-group">
+                        {/* <DatePicker
+                            id="start"
+                            label="Start Date"
+                            required
+                            inputFormat="MM/DD/YYYY"
+                            // value={startDate}
+                            maxDate={endDate}
+                            onChange={handleStart}
+                            /> */}
+
                         <label> Start Date:
                             <input
                                 type="date"
@@ -58,6 +78,16 @@ export default function NewTrip({ currentUser }) {
                         </label>
                     </div>
                     <div className="form-group">
+                    {/* <DatePicker
+                            id="end"
+                            label="End Date"
+                            required
+                            inputFormat="MM/DD/YYYY"
+                            // value={endDate}
+                            minDate={startDate}
+                            onChange={handleEnd}
+                        /> */}
+
                         <label> End Date:
                             <input
                                 type="date"
