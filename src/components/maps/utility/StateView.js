@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import StateBasePrompt from "./StateBasePrompt";
 import BaseCampDetails from "../baseCamps/BaseCampDetails";
 import { useEffect, useState } from "react";
 import StateMapArray from "./StateMapArray";
@@ -27,7 +26,8 @@ export default function StateView({ workingTripId, workingTripDates }) {
 
     return(
         <>
-            <StateBasePrompt workingTripId={workingTripId} />
+            {workingTripId !== 0 && 
+            <h1 className="state-prompt">Now pick a BaseCamp for your recreations!</h1>}
             <div className="stateMap-main">
                 {renderState.src}
                 <BaseCampDetails workingTripId={workingTripId} baseId={baseId} workingTripDates={workingTripDates}/>
