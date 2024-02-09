@@ -1,0 +1,48 @@
+.hikes-main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.hikes-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    max-width: 600px;
+    height: 100px;
+    margin: 20px;
+    padding: 20px;
+    border: 2px dotted black;
+}
+
+.hikeDetails-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hikeDetails-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px dotted red;
+    width: 100%;
+    max-width: 600px;
+    margin: 40px;
+    padding: 60px;
+}
+
+.hikeDetails-header{
+    margin: 0 20px 20px 20px;
+}
+
+.hikeDetails-description{
+    margin: 20px;
+}
+
+.hikeDetails-close{
+    display: flex;
+    align-self: last baseline;
+}

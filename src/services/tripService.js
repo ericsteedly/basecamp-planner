@@ -16,6 +16,12 @@ export const getTripsByUserId = async (id) => {
     )
 }
 
+export const getTripById = async (id) => {
+    return await fetch(`http://localhost:8088/trips/${id}`).then(
+        (res)=>res.json()
+    )
+}
+
 
 export const getTripBaseCamps = async (tripId) => {
     return await fetch(`http://localhost:8088/tripBaseCamps/?tripId=${tripId}&_expand=baseCamp`).then(
@@ -35,6 +41,17 @@ export const deleteTrip = async (tripId) => {
         method: "DELETE"
     }
     return await fetch(`http://localhost:8088/trips/${tripId}`, deleteOptions)
+}
+
+export const editTrip = async (tripObj) => {
+    const putOptions = {
+        method: "PUT",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify(tripObj)
+    }
+    return await fetch(`http://localhost:8088/trips/${tripObj.id}`, putOptions)
 }
 
 

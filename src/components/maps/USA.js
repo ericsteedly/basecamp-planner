@@ -4,9 +4,9 @@ import "./Maps.css"
 export default function USA({ workingTripId}) {
     return (
         <>
-            {workingTripId !== 0 && 
-            <h1 className="usa-prompt">What state will you be traveling in?</h1>}
             <div className="usa-container">
+            {workingTripId !== 0 && 
+                <h1 className="usa-prompt">What state will you be traveling in?</h1>}
                 <img src="assets/USA.png" alt="Map of the USA" width="968" height="620" useMap="#Map"/>
                     <map name="Map">
                         <Link to="1">

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
 import { getBaseCampById, getTripBaseCamps, postTripBaseCamp } from "../../../services/baseCampService"
 import "./BaseCampDetails.css"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
-// import { DatePicker } from "@mui/x-date-pickers"
+import { DatePicker } from "@mui/x-date-pickers"
+import dayjs from "dayjs"
+import { Button } from "@mui/material"
 
 export default function BaseCampDetails({ workingTripId, baseId, workingTripDates }) {
 const navigate = useNavigate()
@@ -58,9 +60,18 @@ const navigate = useNavigate()
         }
     }
 
+    
     const setDateParameters = () => {
         startDate === "" ? setEndDateMin(workingTripDates.startDate) : setEndDateMin(startDate)
         endDate === "" ? setStartDateMax(workingTripDates.endDate) : setStartDateMax(endDate)
+    }
+
+    const handleStart = (date) => {
+        setStartDate(date)
+    }
+
+    const handleEnd = (date) => {
+        setEndDate(date)
     }
 
 
@@ -84,55 +95,49 @@ const navigate = useNavigate()
                 <h1>BaseCamp Details</h1>
                 <h3 className="baseCamp-name"><u>{baseCamp.name}</u></h3>
                 {baseCamp.description}
+                {baseId !== 0 && 
+                    <div className="view-btn-container">
+                        <Link to={`/hikeList/${baseId}`}>
+                            <Button variant="contained">View Trails</Button>
+                        </Link>
+                    </div>}
             </div>
             {workingTripId !== 0 &&
             <div className="addBase-container">
                 <div className="addBase-date-container">
                     <div className="addBase-date">
-                    <label> Start Date:
-                        <input
-                            type="date"
-                            id="start"
-                            name="startDate"
-                            value={startDate}
-                            min={endDateMin}
-                            max={startDateMax}
-                            onChange={(e)=>{setStartDate(e.target.value)}}
-                        />
-                    </label>
-                            {/* <DatePicker
+                            <DatePicker
                             id="start"
                             label="Start Date"
                             required
                             inputFormat="MM/DD/YYYY"
                             value={startDate}
-                            minDate={endDateMin}
-                            maxDate={startDateMax}
-                            onChange={(e)=>{setStartDate(e.target.value)}}
-                            /> */}
+                            minDate={dayjs(endDateMin)}
+                            maxDate={dayjs(startDateMax)}
+                            onChange={handleStart}
+                            slotProps={{
+                                actionBar: {
+                                    actions: ['clear']
+                                }
+                            }}
+                            />
                     </div>
                     <div className="addBase-date">
-                    <label> End Date:
-                        <input
-                            type="date"
-                            id="start"
-                            name="startDate"
-                            value={endDate}
-                            min={endDateMin}
-                            max={startDateMax}
-                            onChange={(e)=>{setEndDate(e.target.value)}}
-                        />
-                    </label>
-                            {/* <DatePicker
+                            <DatePicker
                             id="end"
                             label="End Date"
                             required
                             inputFormat="MM/DD/YYYY"
                             value={endDate}
-                            minDate={endDateMin}
-                            maxDate={startDateMax}
-                            onChange={(e)=>{setEndDate(e.target.value)}}
-                        /> */}
+                            minDate={dayjs(endDateMin)}
+                            maxDate={dayjs(startDateMax)}
+                            onChange={handleEnd}
+                            slotProps={{
+                                actionBar: {
+                                    actions: ['clear']
+                                }
+                            }}
+                        />
                     </div>
                 </div>
                 <div className="addBase-btn-container">

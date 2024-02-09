@@ -17,6 +17,12 @@
     text-align: center;
 }
 
+.view-btn-container{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
 .addBase-container{
     display: flex;
     justify-content: space-evenly;

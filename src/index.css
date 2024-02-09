@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image:  url("../public/assets/background6.png");
+    background-size: cover;
+    background-position: center center;
+}
+
+/* , linear-gradient(to right, #A5A764 70%, #F9E8C2) */
