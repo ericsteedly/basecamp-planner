@@ -51,6 +51,7 @@
 .tripCard-btn-container{
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 }
 
 .tripCard-add-btn{
@@ -59,4 +60,33 @@
 
 .tripCard-delete-btn{
     margin: 10px 20px;
+}
+
+.baseItinerary-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.baseItinerary-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-basis: 50%;
+    padding: 20px;
+    border: 2px dotted red;
+}
+
+.baseItinerary-item{
+    display: flex;
+    margin: 25px;
+}
+
+.hike-group{
+    margin-right: 10px;
+}
+
+.baseItinerary-btn-container{
+    display: flex;
+    justify-content: center;
 }

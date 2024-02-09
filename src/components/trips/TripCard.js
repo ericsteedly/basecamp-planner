@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { deleteTrip, getStates, getTripBaseCamps } from "../../services/tripService"
 import "./Trips.css"
 import TripBaseCamp from "./TripBaseCamp"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 export default function TripCard({ trip, getSetUserTrips, setWorkingTripId, setWorkingTripDates }) {
     const navigate = useNavigate()
@@ -45,16 +45,36 @@ export default function TripCard({ trip, getSetUserTrips, setWorkingTripId, setW
         navigate("/") 
     }
 
+    const convertDate = (dateString) => {
+        let ogDate = new Date(dateString)
+        let options = {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+        }
+        let formattedDate = ogDate.toLocaleDateString('en-US', options)
+        return formattedDate
+    }
+
     return (
         <div className="tripCard">
             <div className="tripCard-header">
                 <h2 className="tripCard-name">{trip.name}</h2>
                 <div className="tripCard-date-container">
-                    <div className="tripCard-date"><b>Start Date:</b> {trip.startDate}</div>
-                    <div className="tripCard-date"><b>End Date:</b> {trip.endDate}</div>
+                    <div className="tripCard-date"><b>Start Date:</b> &nbsp;
+                    {convertDate(trip.startDate)}
+                    </div>
+                    <div className="tripCard-date"><b>End Date:</b> &nbsp;
+                    {convertDate(trip.endDate)}
+                    </div>
                 </div>
             </div>
-            <TripBaseCamp baseCamps={baseCamps} states={states} getSetTripBaseCamps={getSetTripBaseCamps}/>
+            <TripBaseCamp 
+                baseCamps={baseCamps} 
+                states={states}
+                trip={trip} 
+                getSetTripBaseCamps={getSetTripBaseCamps}
+            />
             <div className="tripCard-btn-container">
                 <button 
                     className="tripCard-add-btn"
@@ -62,6 +82,13 @@ export default function TripCard({ trip, getSetUserTrips, setWorkingTripId, setW
                 >
                 Add BaseCamp
                 </button>
+                <Link to={`/myTrips/${trip.id}`}>
+                    <button
+                        className="tripCard-edit-obtn"
+                    >
+                    Edit Trip 
+                    </button>
+                </Link>
                 <button 
                     className="tripCard-delete-btn"
                     onClick={handleDelete}

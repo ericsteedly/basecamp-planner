@@ -3,7 +3,8 @@ import { postNewTrip } from "../../services/tripService"
 import { useNavigate } from "react-router-dom"
 import "./Trips.css"
 
-// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import dayjs from "dayjs";
 
 export default function NewTrip({ currentUser }) {
     const navigate = useNavigate()
@@ -13,13 +14,15 @@ export default function NewTrip({ currentUser }) {
     const [endDate, setEndDate] = useState("")
 
 
-    // const handleStart = (date) => {
-    //     setStartDate(date)
-    // }
 
-    // const handleEnd = (date) => {
-    //     setEndDate(date)
-    // }
+    const handleStart = (date) => {
+        setStartDate(date)
+    }
+
+    const handleEnd = (date) => {
+        setEndDate(date)
+    }
+
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -55,50 +58,26 @@ export default function NewTrip({ currentUser }) {
                 </fieldset>
                 <fieldset>
                     <div className="form-group">
-                        {/* <DatePicker
+                        <DatePicker
                             id="start"
                             label="Start Date"
                             required
                             inputFormat="MM/DD/YYYY"
-                            // value={startDate}
-                            maxDate={endDate}
+                            value={dayjs(startDate)}
+                            maxDate={dayjs(endDate)}
                             onChange={handleStart}
-                            /> */}
-
-                        <label> Start Date:
-                            <input
-                                type="date"
-                                id="start"
-                                name="startDate"
-                                required
-                                value={startDate}
-                                max={endDate}
-                                onChange={(e)=>{setStartDate(e.target.value)}}
                             />
-                        </label>
                     </div>
                     <div className="form-group">
-                    {/* <DatePicker
+                    <DatePicker
                             id="end"
                             label="End Date"
                             required
                             inputFormat="MM/DD/YYYY"
-                            // value={endDate}
-                            minDate={startDate}
+                            value={dayjs(endDate)}
+                            minDate={dayjs(startDate)}
                             onChange={handleEnd}
-                        /> */}
-
-                        <label> End Date:
-                            <input
-                                type="date"
-                                id="start"
-                                name="startDate"
-                                required
-                                value={endDate}
-                                min={startDate}
-                                onChange={(e)=>{setEndDate(e.target.value)}}
-                            />
-                        </label>
+                        />
                     </div>
                 </fieldset>
                 <fieldset>
