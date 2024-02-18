@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import CloseSharpIcon from '@mui/icons-material/CloseSharp';
 import "./DatePopup.css"
 import { editTripBaseCamp } from "../../services/baseCampService";
-import { IconButton } from "@mui/material";
+import { Button, IconButton, Modal } from "@mui/material";
 
 export default function EditDatesPopup({ trigger, setTrigger, trip, camp, popupBtn, getSetTripBaseCamps }) {
-    const [startDate, setStartDate] = useState("")
-    const [endDate, setEndDate] = useState("")
+    const [startDate, setStartDate] = useState(null)
+    const [endDate, setEndDate] = useState(null)
     const [startDateMax, setStartDateMax] = useState("")
     const [endDateMin, setEndDateMin] = useState("")
 
@@ -22,7 +22,7 @@ export default function EditDatesPopup({ trigger, setTrigger, trip, camp, popupB
             startDate: startDate,
             endDate: endDate
         }
-        if (startDate === "" || endDate === "") {
+        if (startDate === null || endDate === null) {
             window.alert("Please select both Start and End dates!")
         } else {
             editTripBaseCamp(newTripBaseObj).then(()=>{
@@ -33,8 +33,8 @@ export default function EditDatesPopup({ trigger, setTrigger, trip, camp, popupB
     }
 
     const setDateParameters = () => {
-        startDate === "" ? setEndDateMin(trip.startDate) : setEndDateMin(startDate)
-        endDate === "" ? setStartDateMax(trip.endDate) : setStartDateMax(endDate)
+        startDate === null ? setEndDateMin(trip.startDate) : setEndDateMin(startDate)
+        endDate === null ? setStartDateMax(trip.endDate) : setStartDateMax(endDate)
     }
 
     const handleStart = (date) => {
@@ -55,15 +55,17 @@ export default function EditDatesPopup({ trigger, setTrigger, trip, camp, popupB
     }, [trip, startDate, endDate])
 
     useEffect(()=>{
-        setStartDate("")
-        setEndDate("")
+        setStartDate(null)
+        setEndDate(null)
     }, [popupBtn])
 
 
     return (
         <>
-            {trigger && 
-                (<div className="popup">
+            <Modal
+                open={trigger}
+            >
+                <div className="popup">
                     <div className="editBaseDates-card">
                         <IconButton
                             className="editBaseDates-close-btn" 
@@ -84,6 +86,11 @@ export default function EditDatesPopup({ trigger, setTrigger, trip, camp, popupB
                                 slotProps={{
                                     actionBar: {
                                         actions: ['clear']
+                                    },
+                                    textField: {
+                                        error: false,
+                                        color: "warning",
+                                        focused: true
                                     }
                                 }}
                             />
@@ -98,18 +105,36 @@ export default function EditDatesPopup({ trigger, setTrigger, trip, camp, popupB
                             slotProps={{
                                 actionBar: {
                                     actions: ['clear']
+                                },
+                                textField: {
+                                    error: false,
+                                    color: "warning",
+                                    focused: true
                                 }
                             }}
                             />
                         </div>
-                            <button 
+                        <div className="editBaseDates-btn-container">
+                            <Button 
                                 className="editBaseDates-save-btn"
+                                variant="contained"
+                                size="small"
+                                sx={{
+                                    boxShadow: 3,
+                                    backgroundColor: '#8A8A8A',
+                                    color: 'white',
+                                    ":hover": {
+                                        backgroundColor: '#A1A1A1',
+                                        color: 'white'
+                                    }
+                                }}
                                 onClick={postNewDates}
                             >Save
-                            </button>
+                            </Button>
+                        </div>
                     </div>
                 </div> 
-            )}
+            </Modal>
         </>
     )
 }

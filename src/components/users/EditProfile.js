@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { editUser, getUserByEmail, getUserById } from "../../services/userService"
 import { getStates } from "../../services/tripService"
 import { useNavigate } from "react-router-dom"
+import { Button, TextField } from "@mui/material"
 
 export default function EditProfile({ currentUser }) {
 const navigate = useNavigate()
@@ -64,52 +65,49 @@ const navigate = useNavigate()
     return (
         <div className="editProfile-main-container">
             <form className="editProfile-form" onSubmit={handleSubmit}>
-                <h1>Edit Profile</h1>
-                <fieldset>
+                <h1 className="editProfile-header">Edit Profile</h1>
                     <div className="form-group">
-                        <label>First Name:
-                            <input 
+                            <TextField 
                                 className="form-control" 
-                                type="text"
+                                label="First Name"
+                                variant="outlined"
+                                color="warning"
+                                focused
                                 required
                                 name="firstName"
                                 value={userObj.firstName}
                                 onChange={handleInput}
                             />
-                        </label>
                     </div>
-                </fieldset>
-                <fieldset>
                     <div className="form-group">
-                        <label>Last Name:
-                            <input 
+                            <TextField 
                                 className="form-control" 
-                                type="text"
+                                label="Last Name"
+                                variant="outlined"
+                                color="warning"
+                                focused
                                 required
                                 name="lastName"
                                 value={userObj.lastName}
                                 onChange={handleInput}
                             />
-                        </label>
                     </div>
-                </fieldset>
-                <fieldset>
                     <div className="form-group">
-                        <label>Email:
-                            <input 
-                                className="form-control" 
+                            <TextField 
+                                className="form-control"
                                 type="email"
-                                required
+                                label="Email"
                                 name="email"
+                                required
+                                variant="outlined"
+                                color="warning"
+                                focused
                                 value={userObj.email}
                                 onChange={handleInput}
                             />
-                        </label>
                     </div>
-                </fieldset>
-                <fieldset>
                     <div className="form-group">
-                        <label>Home State:</label>
+                        <label><b>Home State:</b> &nbsp; </label>
                         <select 
                             className="editProfile-state-dropdown" 
                             name="stateId"
@@ -123,10 +121,25 @@ const navigate = useNavigate()
                             })}
                         </select>
                     </div>
-                </fieldset>
-                <div className="editProfile-btn-container">
-                    <button className="editProfile-save-btn" type="submit">Save</button>
-                </div>
+                    <div className="editProfileForm-btn-container">
+                        <Button 
+                            className="editProfile-save-btn" 
+                            type="submit"
+                            variant="contained"
+                            sx={{
+                                margin: 1,
+                                boxShadow: 3,
+                                backgroundColor: '#8A8A8A',
+                                color: 'white',
+                                ":hover": {
+                                    backgroundColor: '#A1A1A1',
+                                    color: 'white'
+                                }
+                            }}
+                        >
+                        Save
+                        </Button>
+                    </div>
             </form>
         </div>
     )

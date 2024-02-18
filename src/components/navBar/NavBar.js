@@ -1,4 +1,4 @@
-import { AppBar, Box, Container, Toolbar, Typography } from "@mui/material"
+import { AppBar, Box, Container, Link, Toolbar, Typography } from "@mui/material"
 import { MainMenu } from "./MainMenus"
 import { ProfileMenu } from "./ProfileMenu"
 
@@ -28,7 +28,9 @@ export default function NavBar({ setWorkingTripId, setWorkingTripDates }) {
                             flexGrow:3
                             }}
                         >
-                            BASECAMP-PLANNER
+                            <Link href="/" underline="none" color="inherit">
+                                BASECAMP-PLANNER
+                            </Link>
                         </Typography>
                         <MainMenu 
                             setWorkingTripId={setWorkingTripId}

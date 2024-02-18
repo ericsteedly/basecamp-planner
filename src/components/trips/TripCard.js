@@ -3,6 +3,7 @@ import { deleteTrip, getStates, getTripBaseCamps } from "../../services/tripServ
 import "./Trips.css"
 import TripBaseCamp from "./TripBaseCamp"
 import { Link, useNavigate } from "react-router-dom"
+import { Button } from "@mui/material"
 
 export default function TripCard({ trip, getSetUserTrips, setWorkingTripId, setWorkingTripDates }) {
     const navigate = useNavigate()
@@ -76,25 +77,55 @@ export default function TripCard({ trip, getSetUserTrips, setWorkingTripId, setW
                 getSetTripBaseCamps={getSetTripBaseCamps}
             />
             <div className="tripCard-btn-container">
-                <button 
+                <Button 
                     className="tripCard-add-btn"
                     onClick={handleAddBtn}
+                    sx={{
+                        margin: 1,
+                        boxShadow: 3, 
+                        backgroundColor: '#8A8A8A',
+                        color: 'white',
+                        ":hover": {
+                            backgroundColor: '#A1A1A1',
+                            color: 'white'
+                        }
+                    }}
                 >
                 Add BaseCamp
-                </button>
+                </Button>
                 <Link to={`/myTrips/${trip.id}`}>
-                    <button
+                    <Button
                         className="tripCard-edit-obtn"
+                        sx={{
+                            margin: 1,
+                            boxShadow: 3,
+                            backgroundColor: '#8A8A8A',
+                            color: 'white',
+                            ":hover": {
+                                backgroundColor: '#A1A1A1',
+                                color: 'white'
+                            }
+                        }}
                     >
                     Edit Trip 
-                    </button>
+                    </Button>
                 </Link>
-                <button 
+                <Button 
                     className="tripCard-delete-btn"
                     onClick={handleDelete}
+                    sx={{
+                        margin: 1,
+                        boxShadow: 3,
+                        backgroundColor: '#8A8A8A',
+                        color: 'white',
+                        ":hover": {
+                            backgroundColor: '#A1A1A1',
+                            color: 'white'
+                        }
+                    }}
                 >
                 Delete Trip
-                </button>
+                </Button>
             </div>
         </div>
     )

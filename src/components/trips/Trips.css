@@ -1,6 +1,50 @@
+.newTrip-container, .editTrip-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.newTrip-form, .editTrip-form{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 2px 10px #554a31;
+    background-color: white;
+    padding:20px 20px 10px 20px;
+    margin: 20px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.newTrip-header, .editTrip-header{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.newTrip-name-container, .editTrip-name-container{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.newTrip-date-container, .editTrip-date-container{
+    display: flex;
+    justify-content: center;
+}
+
+.newTrip-date, .editTrip-date{
+    margin: 20px;
+}
+
+.newTrip-btn-container, .editTrip-btn-container{
+    display: flex;
+    justify-content: flex-end;
+}
+
 .tripList-container{
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .tripList-header{
@@ -10,15 +54,20 @@
 .tripCard{
     display: flex;
     flex-direction: column;
-    border: 2px dotted red;
-    padding:10px 20px;
+    box-shadow: 0px 2px 10px #554a31;
+    background-color: white;
+    padding:20px 20px 10px 20px;
     margin: 20px;
+    width: 100%;
+    max-width: 1000px;
 }
 
 .tripCard-header{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .tripCard-name{
@@ -28,10 +77,17 @@
 .tripCard-date-container{
     display: flex;
     justify-content: space-evenly;
+    margin-left: 10px;
 }
 
 .tripCard-date{
     margin-right: 10px;
+}
+
+.tripCard-baseCamp-list-container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 .tripCard-baseCamp-list{
@@ -40,31 +96,30 @@
 
 .baseCamp-list-item{
     display: flex;
-    justify-content: flex-start;
-    margin: 5px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 10px;
 }
 
 .baseCamp-item{
     margin: 5px;
 }
 
+.baseCamp-item-btns{
+    margin-left: auto;
+}
+
 .tripCard-btn-container{
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
-}
-
-.tripCard-add-btn{
-    margin: 10px 20px;
-}
-
-.tripCard-delete-btn{
-    margin: 10px 20px;
 }
 
 .baseItinerary-main{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -72,9 +127,22 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    flex-basis: 50%;
+    flex-basis: 60%;
+    margin: 20px;
     padding: 20px;
-    border: 2px dotted red;
+    box-shadow: 0px 2px 10px #554a31;
+    background-color: white;
+}
+
+.baseItinerary-header-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 95%;
+}
+
+.baseItinerary-header{
+    align-self: center;
 }
 
 .baseItinerary-item{

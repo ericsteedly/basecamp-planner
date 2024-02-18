@@ -1,3 +1,9 @@
+export const getStateById = async (id) => {
+    return await fetch(`http://localhost:8088/states/${id}`).then(
+        (res)=>res.json()
+    )
+}
+
 export const getBaseCampById = async (id) => {
     return await fetch(`http://localhost:8088/baseCamps/${id}`).then(
         (res)=>res.json()

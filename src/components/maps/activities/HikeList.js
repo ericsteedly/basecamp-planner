@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react"
-import { Link, useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { getHikesByBaseId, postTripHike } from "../../../services/hikeService"
-import { Button } from "@mui/material"
+import { Button, Link } from "@mui/material"
+import KeyboardReturnTwoToneIcon from '@mui/icons-material/KeyboardReturnTwoTone';
 import "./Hikes.css"
+
 
 
 export default function HikeList() {
@@ -34,20 +36,42 @@ export default function HikeList() {
 
     return (
         <div className="hikes-main-container">
-            <h2>Hiking Trails Near This BaseCamp</h2>
+            <div className="hikes-header-container">
+                <div className="hikes-goBack-btn">
+                    <Button 
+                        className="hikes-back-btn"
+                        startIcon={<KeyboardReturnTwoToneIcon/>}
+                        variant="contained"
+                        color="inherit"
+                        sx={{
+                            boxShadow: 3,
+                            backgroundColor: '#8A8A8A',
+                            color: 'white',
+                            ":hover": {
+                                backgroundColor: '#A1A1A1',
+                                color: 'white'
+                            }
+                        }}
+                        onClick={()=>navigate(-1)}
+                    >
+                        Go Back
+                    </Button>
+                </div>
+                <h2 className="hikes-header">Hiking Trails Near This BaseCamp</h2>
+            </div>
             {hikes.map((hike) => {
                 return (
                     <div className="hikes-card" key={hike.id}>
                         <div className="hike-group">
                             {tripBaseId === undefined ?   
                             <div className="hike-item">
-                                <Link to={`/hikeDetails/${hike.id}`}>
+                                <Link href={`/hikeDetails/${hike.id}`} color="#BE2800">
                                     <b>{hike.name}</b>
                                 </Link>
                             </div>
                             :
                             <div className="hike-item">
-                                <Link to={`/hikeDetails/${hike.id}/${tripBaseId}`}>
+                                <Link href={`/hikeDetails/${hike.id}/${tripBaseId}`} color="#BE2800">
                                     <b>{hike.name}</b>
                                 </Link>
                             </div>
@@ -59,9 +83,19 @@ export default function HikeList() {
                                 <Button
                                     className="addHike-btn"
                                     variant="contained"
+                                    size="small"
+                                    sx={{
+                                        boxShadow: 3,
+                                        backgroundColor: '#8A8A8A',
+                                        color: 'white',
+                                        ":hover": {
+                                            backgroundColor: '#A1A1A1',
+                                            color: 'white'
+                                        }
+                                    }}
                                     onClick={()=>handleAddHike(hike.id)}
                                 >
-                                Add Hike to BaseCamp
+                                Add to BaseCamp
                                 </Button>
                             </div>
                         }

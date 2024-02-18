@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom"
-import "./Register.css"
 import { useEffect, useState } from "react"
 import { getUserByEmail, postNewUser } from "../../services/userService"
 import { getStates } from "../../services/tripService"
+import "./Register.css"
+import { Button, TextField } from "@mui/material"
 
 
 export default function Register() {
@@ -53,75 +54,85 @@ export default function Register() {
 
     return (
         <div className="register-main-container">
-            <section className="register-form-container">
-                <form className="register-form" onSubmit={handleSubmit}>
-                    <h3>Create an account</h3>
-                    <fieldset>
-                        <div className="form-group">
-                            <input
-                                className="form-control"
-                                type="text"
-                                id="firstName"
-                                value={newUser.firstName}
-                                placeholder="First Name"
-                                required
-                                onChange={updateUser} 
-                            />
-                        </div>
-                    </fieldset>
-                    <fieldset>
-                        <div className="form-group">
-                            <input
-                                className="form-control"
-                                type="text"
-                                id="lastName"
-                                value={newUser.lastName}
-                                placeholder="Last Name"
-                                required
-                                onChange={updateUser} 
-                            />
-                        </div>
-                    </fieldset>
-                    <fieldset>
-                        <div className="form-group">
-                            <input
-                                className="form-control"
-                                type="email"
-                                id="email"
-                                value={newUser.email.toLocaleLowerCase()}
-                                placeholder="Email Address"
-                                required
-                                onChange={updateUser} 
-                            />
-                        </div>
-                    </fieldset>
-                    <fieldset>
-                        <div className="form-group">
-                            <select 
-                                className="homeState-dropdown"
-                                id="stateId"
-                                required
-                                onChange={updateUser}
-                            >
-                                <option value={0}>Choose your home state!</option>
-                                {states.map((state)=>{
-                                    return <option key={state.id} value={state.id}>{state.name}</option>
-                                })}
-                            </select>
-                        </div>
-                    </fieldset>
-                    <fieldset>
-                        <div className="form-group">
-                            <button 
-                                className="register-btn"
-                                type="submit"
-                            >
-                            Submit
-                            </button>
-                        </div>
-                    </fieldset>
-                </form>
-            </section>
+            <form className="register-form" onSubmit={handleSubmit}>
+                <h3 className="register-header">Create an account</h3>
+                    <div className="form-group">
+                        <TextField
+                            className="form-control"
+                            label="First Name"
+                            id="firstName"
+                            required
+                            variant="outlined"
+                            color="warning"
+                            focused
+                            placeholder="First Name"
+                            value={newUser.firstName}
+                            onChange={updateUser} 
+                        />
+                    </div>
+                    <div className="form-group">
+                        <TextField
+                            className="form-control"
+                            label="Last Name"
+                            id="lastName"
+                            required
+                            variant="outlined"
+                            color="warning"
+                            focused
+                            placeholder="Last Name"
+                            value={newUser.lastName}
+                            onChange={updateUser} 
+                        />
+                    </div>
+                    <div className="form-group">
+                        <TextField
+                            className="form-control"
+                            type="email"
+                            label="Email"
+                            id="email"
+                            required
+                            variant="outlined"
+                            color="warning"
+                            focused
+                            value={newUser.email.toLocaleLowerCase()}
+                            placeholder="Email Address"
+                            onChange={updateUser} 
+                        />
+                    </div>
+                    <div className="form-group">
+                        <select 
+                            className="homeState-dropdown"
+                            id="stateId"
+                            required
+                            value={newUser.stateId}
+                            onChange={updateUser}
+                        >
+                            <option value={0}>Choose your home state!</option>
+                            {states.map((state)=>{
+                                return <option key={state.id} value={state.id}>{state.name}</option>
+                            })}
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <Button 
+                            className="register-btn"
+                            type="submit"
+                            variant="contained"
+                            sx={{
+                                margin: 1,
+                                boxShadow: 3,
+                                backgroundColor: '#8A8A8A',
+                                color: 'white',
+                                ":hover": {
+                                    backgroundColor: '#A1A1A1',
+                                    color: 'white'
+                                }
+                            }}
+                        >
+                        Submit
+                        </Button>
+                    </div>
+            </form>
         </div>
     )
 }
