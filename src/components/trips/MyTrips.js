@@ -4,7 +4,6 @@ import TripCard from "./TripCard"
 import "./Trips.css"
 
 export default function MyTrips({ currentUser, setWorkingTripId, setWorkingTripDates }) {
-
     const [userTrips, setUserTrips] = useState([])
 
     const getSetUserTrips = () => {

@@ -22,14 +22,7 @@ useEffect(()=>{
     return (
         <div className="hikeDetails-main">
             <div className="hikeDetails-card">
-               {tripHikeId === undefined ?
-                <IconButton 
-                    className="hikeDetails-close"
-                    onClick={()=>{navigate(`/hikeList/${hike.baseCampId}`)}}
-                >
-                    <CloseSharpIcon/>
-                </IconButton>
-                :
+               {
                 <IconButton 
                     className="hikeDetails-close"
                     onClick={()=>{navigate(-1)}}

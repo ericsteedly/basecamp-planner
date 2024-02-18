@@ -1,13 +1,25 @@
 .register-main-container {
-
-}
-
-.register-form-container {
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 70vh;
 }
 
 .register-form {
-    border: 2px dotted red;
-    padding: 40px
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 2px 10px #554a31;
+    background-color: white;
+    padding:20px 20px 10px 20px;
+    margin: 20px;
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
+    max-height: 450px;
+}
+
+.register-header{
+    margin-bottom: 20px;
 }

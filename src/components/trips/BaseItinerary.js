@@ -1,13 +1,15 @@
-import { Link, useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { deleteTripHike, getHikeDetails, getTripHikes } from "../../services/hikeService"
 import { useEffect, useState } from "react"
 import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
 import AddBoxSharpIcon from '@mui/icons-material/AddBoxSharp';
-import { Button, IconButton } from "@mui/material";
-import "./Trips.css"
+import { Button, IconButton, Link } from "@mui/material";
 import { getTripBaseCampById } from "../../services/baseCampService";
+import "./Trips.css"
 
 export default function BaseItinerary() {
+    const navigate = useNavigate()
+
     const { tripBaseId } = useParams()
     
     const [baseCamp, setBaseCamp] = useState({})
@@ -45,13 +47,32 @@ export default function BaseItinerary() {
 
     return (
         <div className="baseItinerary-main">
+            <div className="baseItinerary-header-container">
+                <Button
+                    variant="contained"
+                    sx={{
+                        boxShadow: 3,
+                        marginRight: 'auto',
+                        backgroundColor: '#8A8A8A',
+                        color: 'white',
+                        ":hover": {
+                            backgroundColor: '#A1A1A1',
+                            color: 'white'
+                        }
+                    }}
+                    onClick={()=>{navigate(-1)}}
+                >
+                    Go Back
+                </Button>
+            <h2 className="baseItinerary-header">BaseCamp Hikes</h2>
+        </div>
             <div className="baseItinerary-card">
             {hikes.map((hike) => {
                 return (
                     <div className="baseItinerary-item" key={hike.id}>
                         <div className="hike-group">
-                            <Link to={`/hikeDetails/${hike.hike.id}/${hike.id}`}>
-                                <div className="hike-name">{hike.hike.name}</div>
+                            <Link href={`/hikeDetails/${hike.hike.id}/${hike.id}`} color="#BE2800">
+                                <div className="hike-name"><b>{hike.hike.name}</b></div>
                             </Link>
                             <div className="hike-location">{hike.hike.location}</div>
                         </div>
@@ -65,11 +86,20 @@ export default function BaseItinerary() {
                 )
             })}
                 <div className="baseItinerary-btn-container">
-                    <Link to={`/hikeList/${baseCamp.baseCampId}/${tripBaseId}`}>
+                    <Link href={`/hikeList/${baseCamp.baseCampId}/${tripBaseId}`}>
                         <Button
                             className="hike-add-btn"
                             size="large"
                             variant="contained"
+                            sx={{
+                                boxShadow: 3,
+                                backgroundColor: '#8A8A8A',
+                                color: 'white',
+                                ":hover": {
+                                    backgroundColor: '#A1A1A1',
+                                    color: 'white'
+                                }
+                            }}
                             startIcon={<AddBoxSharpIcon />}
                         > 
                         Add Hike

@@ -40,7 +40,7 @@ export const ProfileMenu = () => {
             >
                 <MenuItem onClick={handleClose}>
                     <Link 
-                        href="profile"
+                        href="/profile"
                         underline='none'
                         color="inherit"
                     >

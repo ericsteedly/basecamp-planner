@@ -4,31 +4,39 @@ export default function California({ handleBaseClick }) {
 
     return (
         <div className="state-container">
-            <img src="assets/CALIFORNIA.png" alt="State Map of California" width="412" height="486" useMap="#Map"/>
+            <img src="assets/CALIFORNIA.png" alt="State Map of California" width="454" height="539" useMap="#Map"/>
                 <map name="Map">
                     <button className="base-btn" onClick={handleBaseClick}>
-                        <area id="13" name="Redding"shape="poly" coords="70,43,123,44,122,54,72,54" alt="Redding"/>
+                        <area id="13" name="Redding" shape="poly" coords="84,57,140,58,137,70,111,70,111,78,103,77,103,70,84,69" alt="Redding"
+                        data-location="40.586647033691406,-122.39168548583984" />
                     </button>
                     <button className="base-btn" onClick={handleBaseClick}>
-                        <area id="14" name="Eureka" shape="poly" coords="2,63,47,64,47,73,1,74" alt="Eureka" />
+                        <area id="14" name="Eureka" shape="poly" coords="9,82,26,81,26,70,34,70,34,81,56,82,56,93,10,93" alt="Eureka"
+                        data-location="40.802249908447266,-124.16370391845703" />
                     </button>
                     <button className="base-btn" onClick={handleBaseClick}>
-                        <area id="15" name="South Lake Tahoe" shape="poly" coords="102,136,200,135,200,146,102,147" alt="South Lake Tahoe" />
+                        <area id="15" name="South Lake Tahoe" shape="poly" coords="116,159,213,158,212,169,188,169,188,180,179,180,178,169,116,169" alt="South Lake Tahoe"
+                        data-location="38.940086364746094,-119.9771728515625" />
                     </button>
                     <button className="base-btn" onClick={handleBaseClick}>
-                        <area id="16" name="San Francisco" shape="poly" coords="64,188,145,189,144,200,63,200" alt="San Francisco" />
+                        <area id="16" name="San Francisco" shape="poly" coords="75,214,155,214,155,225,92,224,92,242,85,241,86,225,77,225" alt="San Francisco"
+                        data-location="37.77510070800781,-122.41952514648438" />
                     </button>
                     <button className="base-btn" onClick={handleBaseClick}>
-                        <area id="17" name="Lee Vining" shape="poly" coords="184,207,243,218,240,228,182,218" alt="Lee Vining" />
+                        <area id="17" name="Lee Vining" shape="poly" coords="200,231,228,237,230,229,238,230,235,237,256,243,256,252,200,240" alt="Lee Vining"
+                        data-location="37.95768356323242,-119.1199722290039" />
                     </button>
                     <button className="base-btn" onClick={handleBaseClick}>
-                        <area id="18" name="San Luis Obispo" shape="poly" coords="129,318,219,341,216,353,127,329" alt="San Luis Obispo" />
+                        <area id="18" name="San Luis Obispo" shape="poly" coords="143,349,230,372,228,382,160,365,159,377,150,375,156,364,140,358" alt="San Luis Obispo"
+                        data-location="35.282936096191406,-120.65961456298828" />
                     </button>
                     <button className="base-btn" onClick={handleBaseClick}>
-                        <area id="19" name="Yucca Valley" shape="poly" coords="267,396,355,390,357,402,272,407" alt="Yucca Valley" />
+                        <area id="19" name="Yucca Valley" shape="poly" coords="294,440,380,434,378,446,347,448,348,456,338,457,338,448,296,452" alt="Yucca Valley"
+                        data-location="34.11438751220703,-116.43221282958984" />
                     </button>
                     <button className="base-btn" onClick={handleBaseClick}>
-                        <area id="20" name="San Diego" shape="poly" coords="300,459,364,460,364,470,301,471" alt="San Diego" />
+                        <area id="20" name="San Diego" shape="poly" coords="320,496,385,496,385,506,321,506,308,514,306,508,318,504" alt="San Diego"
+                        data-location="32.71586608886719,-117.16106414794922" />
                     </button>
                 </map>
         </div>

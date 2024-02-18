@@ -1,7 +1,8 @@
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import "./Login.css"
 import { useState } from "react"
 import { getUserByEmail } from "../../services/userService"
+import { Button, Link, TextField } from "@mui/material"
 
 export default function Login() {
     const navigate = useNavigate()
@@ -29,36 +30,49 @@ export default function Login() {
 
     return (
         <div className="login-main-container">
-            <section className="login-form-container">
                 <form className="login-form" onSubmit={handleSignIn}>
-                    <h1>Welcome To BaseCamp Planner!</h1>
-                    <h4>Log in to start planning your adventure</h4>
-                    <fieldset>
+                    <h1 className="login-header">Welcome To BaseCamp Planner!</h1>
+                    <h4 className="login-statement">Log in to start planning your adventure</h4>
                         <div className="form-group">
-                            <input
+                            <TextField
                                 className="form-control"
                                 type="email"
+                                label="Email"
+                                variant="outlined"
+                                required
+                                color="warning"
+                                focused
                                 value={email}
                                 placeholder="Email Address"
                                 onChange={(e)=> setEmail(e.target.value)}
                             />
                         </div>
-                    </fieldset>
-                    <fieldset>
                         <div className="form-group">
-                                <button 
+                                <Button 
                                     className="login-btn"
                                     type="submit"
+                                    variant="contained"
+                                sx={{
+                                    margin: 1,
+                                    boxShadow: 3,
+                                    backgroundColor: '#8A8A8A',
+                                    color: 'white',
+                                    ":hover": {
+                                        backgroundColor: '#A1A1A1',
+                                        color: 'white'
+                                    }
+                                }}
                                 >
                                 Sign in
-                                </button>
+                                </Button>
                         </div>
-                    </fieldset>
                 </form>
-            </section>
             <section className="login-register-container">
                 <div className="register-link">
-                    <Link to="/register">No account yet? Register here!</Link>
+                    No account yet? &nbsp;
+                    <Link href="/register" >
+                        <b>Register here!</b>
+                    </Link>
                 </div>
             </section>
         </div>

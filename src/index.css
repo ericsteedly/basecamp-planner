@@ -2,12 +2,23 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+h1, h2, h3{
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: normal;
 }
 
 body{
+    background-color: #adaf7b;
     background-image:  url("../public/assets/background6.png");
     background-size: cover;
     background-position: center center;
 }
 
-/* , linear-gradient(to right, #A5A764 70%, #F9E8C2) */
+
+
