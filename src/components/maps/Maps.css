@@ -47,10 +47,10 @@
     outline: inherit;
 }
 
- gmp-map {
+#map {
     height: 100%;
-  }
-  
+}
+
 .gmp-map-container{
     margin: 20px;
     height: 300px;
