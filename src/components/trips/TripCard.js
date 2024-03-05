@@ -4,6 +4,7 @@ import "./Trips.css"
 import TripBaseCamp from "./TripBaseCamp"
 import { Link, useNavigate } from "react-router-dom"
 import { Button } from "@mui/material"
+import { deleteTripHike, getTripHikes } from "../../services/hikeService"
 
 export default function TripCard({ trip, getSetUserTrips, setWorkingTripId, setWorkingTripDates }) {
     const navigate = useNavigate()
@@ -27,10 +28,22 @@ export default function TripCard({ trip, getSetUserTrips, setWorkingTripId, setW
         })
     }, [])
 
-    const handleDelete = () => {
+    const handleDelete = async () => {
         if(window.confirm("Are you sure you want to delete this trip?")){
-            deleteTrip(trip.id).then(()=>{
-                getSetUserTrips()
+            Promise.all(baseCamps.map((base)=>{
+                return (
+                    getTripHikes(base.id).then((hikesArray)=>{
+                        hikesArray.map((hike)=>{
+                            return (
+                                deleteTripHike(hike.id)
+                            )
+                        })
+                    })
+                )
+            })).then(()=>{
+                deleteTrip(trip.id).then(()=>{
+                    getSetUserTrips()
+                })
             })
         }
     }

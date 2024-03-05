@@ -5,7 +5,9 @@ export default function USA({ workingTripId}) {
     return (
         <>
             <div className="usa-container">
-            {workingTripId !== 0 && 
+            {workingTripId === 0 ? 
+                <h1 className="usa-prompt">Click on a state to explore!</h1>
+                :
                 <h1 className="usa-prompt">What state will you be traveling in?</h1>}
                 <img src="assets/USA.png" alt="Map of the USA" width="1097" height="693" useMap="#Map"/>
                     <map name="Map">

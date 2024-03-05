@@ -53,3 +53,4 @@ export const editTripBaseCamp = async (tripBaseObj) => {
     }
     return await fetch(`http://localhost:8088/tripBaseCamps/${tripBaseObj.id}`, putOptions)
 }
+

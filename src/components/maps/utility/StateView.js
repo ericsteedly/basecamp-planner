@@ -2,8 +2,10 @@ import { useParams } from "react-router-dom";
 import BaseCampDetails from "../baseCamps/BaseCampDetails";
 import { useEffect, useState } from "react";
 import StateMapArray from "./StateMapArray";
-import "../Maps.css"
 import { getStateById } from "../../../services/baseCampService";
+import { Loader } from "@googlemaps/js-api-loader";
+import "../Maps.css"
+
 
 
 export default function StateView({ workingTripId, workingTripDates }) {
@@ -12,19 +14,53 @@ export default function StateView({ workingTripId, workingTripDates }) {
     const [stateObj, setStateObj] = useState({})
     const [baseId, setBaseId] = useState(0)
     const [renderState, setRenderState] = useState({})
-    const [baseLocation, setBaseLocation] = useState("40.12150192260742,-100.45039367675781")
-    const [zoom, setZoom] = useState("4")
+    const [baseLat, setBaseLat] = useState("40.12150192260742")
+    const [baseLng, setBaseLng] = useState("-100.45039367675781")
+    const [zoom, setZoom] = useState(4)
 
+    // set map and baseId when base is clicked on
     const handleBaseClick = (e) =>{
         setBaseId(e.target.id)
-        setBaseLocation(e.target.dataset.location)
-        setZoom("14")
-        console.log(e.target.dataset.location)
+        setBaseLat(e.target.dataset.lat)
+        setBaseLng(e.target.dataset.lng)
+        setZoom(14)
         }
 
+    // create list of all the state map components
     const stateComponents = StateMapArray({ handleBaseClick })
-    
 
+    // import and set up google maps loader
+    const loader = new Loader({
+        apiKey: "",
+        version: "weekly",
+        libraries: ["places"]
+    })
+
+    const mapOptions = {
+        center: {
+            lat: parseFloat(baseLat),
+            lng: parseFloat(baseLng)
+        },
+        zoom: zoom
+    }
+
+    const loadMap = () => {
+        loader
+        .importLibrary('maps')
+        .then(({Map}) => {
+            new Map(document.getElementById("map"), mapOptions)
+        })
+        .catch((e) => {
+            console.log(e)
+        })
+    }
+
+    // load new map for each state or baseCamp click
+    useEffect(()=>{
+        loadMap()
+    }, [baseId, stateId])
+    
+    // Look through list of state map components and find coinciding stateId, also request state data from API
     useEffect(()=>{
             const x = stateComponents.find((obj) => obj.id === parseInt(stateId))
             setRenderState(x) 
@@ -49,9 +85,8 @@ export default function StateView({ workingTripId, workingTripDates }) {
                 />
             </div>
             <div className="gmp-map-container">
-                <gmp-map center={baseLocation} zoom={zoom} map-id="DEMO_MAP_ID">
-                    <gmp-advanced-marker position={baseLocation} title="My location"></gmp-advanced-marker>
-                </gmp-map>
+                {/* Google map rendered in div element below */}
+                <div id="map"></div>
             </div> 
         </div>       
     
