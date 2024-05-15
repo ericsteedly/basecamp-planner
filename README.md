@@ -30,6 +30,8 @@ Organizing an outdoors recreation roadtrip can be difficult, especially if you a
 ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 
 ## Installations
+This project requires node.js, please install first if necessary 
+
 #### API
   First, you will need to set up the JSON Server API to run this application
   1. Clone the following repo and cd into the directory:

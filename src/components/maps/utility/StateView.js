@@ -31,7 +31,7 @@ export default function StateView({ workingTripId, workingTripDates }) {
 
     // import and set up google maps loader
     const loader = new Loader({
-        apiKey: "AIzaSyAEYTRX0473bwL-lmhIZzgSVp1HCG8sC7g",
+        apiKey: "",
         version: "weekly",
         libraries: ["places"]
     })
