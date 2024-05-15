@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+# Welcome to BaseCamp Planner
+BaseCamp Planner is a front-end application that I created for my front-end capstone project in the first 3-months of my time in the Nashville Software School full-stack developer bootcamp.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About BaseCamp Planner
+Organizing an outdoors recreation roadtrip can be difficult, especially if you are unfamiliar with the area of travel. There can be an overwhelming amount of places to stay and activities to fit into your schedule. This applicaton is intended to make the planning process effective and efficient for a user, while also providing a fun and explorative user experieince.
 
-## Available Scripts
+## Features
+* User account data
+* Explore Base Camp locations and hiking trails using an interactive map
+* Create/save multiple trip plans and add BaseCamp locations/dates
+* Add hiking trails to Base Camp plans that are saved on a trip
+* Integrated Google Map feature to more thouroughly investigate preloaded Base Camp locations
+* Edit and cancel trips/plans
+* Manage user account info
+  
+## Useage Note!!
+* Data input for this application is still in progress. Only the following states on the map have full functionality:
+  - California, Arizona, Utah, North Carolina, Maine.
+* State Maps with only base camp data, but no hikes include:
+  - Washington, Oregon, Nevada, Alaska, Hawaii, Montana, Wyoming, Colorado, New Mexico, Tennessee, New York
+* This application requires a secret API key for Google Maps to function properly. If you clone this application, it will not contain an API key and the google maps feature will not load, but the application will still work.
 
-In the project directory, you can run:
+## Built With
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![NODE.js](	https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![MUI](https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white)
+![CSS](	https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 
-### `npm start`
+## Installations
+#### API
+  First, you will need to set up the JSON Server API to run this application
+  1. Clone the following repo and cd into the directory:
+  ```bash
+  git@github.com:ericsteedly/basecamp-api.git
+  ```
+  2. The API requires that json server is installed, in the directory run:
+  ```bash
+  npm install json-server
+  ```
+  3. You can open the project in your code editor to view the data. Use the following script to activate the server:
+  ```bash
+  json-server database.json -p 8088 --watch
+  ```
+  You should see the following response in the terminal and the server should be active:
+  ```bash
+  
+  \{^_^}/ hi!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  Loading database.json
+  Done
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  Resources
+  http://localhost:8088/users
+  http://localhost:8088/states
+  http://localhost:8088/baseCamps
+  http://localhost:8088/hikes
+  http://localhost:8088/trips
+  http://localhost:8088/tripBaseCamps
+  http://localhost:8088/tripHikes
 
-### `npm test`
+  Home
+  http://localhost:8088
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  Type s + enter at any time to create a snapshot of the database
+  Watching...
+  ```
 
-### `npm run build`
+#### Client
+  Now you can set up the client application
+  
+  4. Clone the following repo and cd into the directory:
+  ```bash
+  git@github.com:ericsteedly/basecamp-planner.git
+  ```
+  5. You can open the project in your code editor
+  6. Install dependenceies with `npm install`
+  7. Run the application in development mode with with `npm start`
+  8. If it does not open automatically, Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  With the app running, you can now register as a new user via the link on the log in page and begin exploring the maps and building trips!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Future Updates
+* Continued addition of hiking data for states
+* Continued completion of all state maps
+* Application deployment, secret api key for google maps stored in env variable
+* Build a complete server via Django Framework and SQLite
+* Integrate Google Auth and Google Calendar API
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Author
+[@ericsteedly](https://github.com/ericsteedly)
